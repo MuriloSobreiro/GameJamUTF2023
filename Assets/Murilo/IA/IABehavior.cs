@@ -13,7 +13,7 @@ public class IABehavior : MonoBehaviour
     private int i = 0;
     public float coolDownRonda = 5f, coolDownAtencao = 5f, tempoAtencao = 2f;
     private float timer = 0;
-    public Animator animator;
+    public Animator animator, animAtencao;
 
     void Start()
     {
@@ -82,6 +82,7 @@ public class IABehavior : MonoBehaviour
     IEnumerator esperaAtencao(Vector2 ponto)
     {
         timer = 0;
+        animAtencao.SetTrigger("Atencao");
         yield return new WaitForSeconds(tempoAtencao);
         atencao = true;
         timer = 0;
