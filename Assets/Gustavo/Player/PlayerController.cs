@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 velocity = Vector2.zero;
     private ObjectBaseController scaryObject;
     private bool isHide = false;
+    public QuartoBehavior quarto;
 
     private void Awake()
     {
@@ -21,8 +22,12 @@ public class PlayerController : MonoBehaviour
     }
 
     public void CallAttention(ObjectBaseController objectController) {
+        if(quarto.GameOver()) {
+            GameOver();
+            return;
+        }
         if (!objectController.Interagir()) return;
-        objectController.Interagir();
+        
         sprite.color = new Color(1f, 1f, 1f, 1f);
 
         Invoke("MakeInvisible", 0.5f);
@@ -30,7 +35,13 @@ public class PlayerController : MonoBehaviour
 
     public void InteractScary(ObjectBaseController objectController) {
         if (isHide) return;
+        if(quarto.GameOver()) {
+            GameOver();
+            return;
+        }
         if (!objectController.Interagir()) return;
+
+
         scaryObject = objectController;
         sprite.color = new Color(1f, 1f, 1f, 1f);
 
@@ -68,6 +79,10 @@ public class PlayerController : MonoBehaviour
         sprite.color = new Color(1f, 1f, 1f, 0.5f);
     }
 
+    private void GameOver(){
+        print("Game Over");
+    }
+
     void Update()
     {
         if (isHide && Input.GetKeyDown(KeyCode.E))
@@ -81,6 +96,15 @@ public class PlayerController : MonoBehaviour
         {
             isHide = false;
             Invoke("UnhidePlayer", 0.5f);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Quarto")
+        {
+            print("quarto");
+            quarto = other.GetComponent<QuartoBehavior>();
         }
     }
 

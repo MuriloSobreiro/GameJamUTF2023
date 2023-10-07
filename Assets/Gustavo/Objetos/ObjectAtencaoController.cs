@@ -24,7 +24,6 @@ public class ObjetoAtencaoController : ObjectBaseController
         if (!canInteract) return false;
         canInteract = false;
         print("Interagiu");
-        print(attentionPoint.position);
         quarto.Atrair(attentionPoint.position);
         Invoke("ResetUse", delayUse);
 
