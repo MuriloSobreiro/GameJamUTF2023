@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class IABehavior : MonoBehaviour
 {
-    private List<Vector2> pontosRonda = new List<Vector2>();
+    public List<Vector2> pontosRonda = new List<Vector2>();
     private QuartoBehavior quarto;
     public GameObject rondas;
     private Rigidbody2D rb;
-    public Vector2 velocidade = Vector2.right, destino = Vector2.zero, destinoTemp;
-    private bool escada = false;
+    public Vector2 destinoDesejado = Vector2.zero;
+    public bool escada = false, assustado = false, atencao = false;
+    private int i = 0;
+    public float coolDownRonda = 5f, coolDownAtencao = 5f;
+    private float timer = 0;
 
     void Start()
     {
@@ -18,57 +21,66 @@ public class IABehavior : MonoBehaviour
         {
             pontosRonda.Add(child.position);
         }
-        MudarRonda();
+        MudarDestino(pontosRonda[0]);
     }
 
-    void MudarRonda()
+    private Vector2 DecidePonto()
     {
-        var a = pontosRonda[Random.Range(0, pontosRonda.Count)];
-        MudarDestino(a);
-        Invoke("MudarRonda", 5f);
-    }
-    public void MudarDestino(Vector2 d)
-    {
-        CancelInvoke();
-        if (Mathf.Abs(d.y - transform.position.y) > 1)
-        {
-            destinoTemp = destino;
-            print("MudarAndar");
-            MudarAndar(d);
-        }
-        else
-        {
-            destino = d;
-            Invoke("MudarRonda", 5f);
-        }
-    }
-    public void Assustar()
-    {
-
-    }
-    private void MudarAndar(Vector2 d)
-    {
-        destino = (d.y - transform.position.y) > 1 ? quarto.escadaSobe.transform.position : quarto.escadaDesce.transform.position;
-        print("MudarAndar2");
-        if (Mathf.Abs(transform.position.x - destino.x) < 0.5f)
+        Vector2 destino = Vector2.zero;
+        if (Mathf.Abs(destinoDesejado.y - transform.position.y) > 0.5f)
         {
             escada = true;
+            destino = (destinoDesejado.y - transform.position.y) > 1 ? quarto.escadaSobe.transform.position : quarto.escadaDesce.transform.position;
+        }
+        else
+            destino = destinoDesejado;
+        return destino;
+    }
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > coolDownRonda && !atencao)
+            DestRonda();
+        if (timer > coolDownAtencao && atencao)
+            atencao = false;
+            
+        Vector2 destino = DecidePonto();
+        rb.MovePosition(Vector2.MoveTowards(transform.position,new Vector2(destino.x,transform.position.y), 0.1f));
+        if (Mathf.Abs(transform.position.x - destino.x) < 0.6f && escada)
+        {
             var a = quarto.GetEscada(destino.y);
             if (destino.y > transform.position.y)
                 transform.position = a.escadaSobe.transform.position;
             else
                 transform.position = a.escadaDesce.transform.position;
             transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            escada = false;
         }
     }
-    private void Update()
+    void DestRonda()
     {
-        if (!escada)
-            rb.MovePosition(Vector2.MoveTowards(transform.position, destino, 0.1f));
-        else
-            escada = false;
+        timer = 0;
+        i++;
+        if (i >= pontosRonda.Count)
+            i = 0;
+        MudarDestino(pontosRonda[i]);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    void DestAtencao()
+    {
+        timer = 0;
+        atencao = true;
+    }
+    public void MudarDestino(Vector2 ponto, bool att = false)
+    {
+        if (att)
+            DestAtencao();
+        destinoDesejado = ponto;
+    }
+    public void Assustar()
+    {
+
+    }
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Quarto")
         {

@@ -13,7 +13,7 @@ public class TesteBehavior : MonoBehaviour
         if (ativar)
         {
             ativar = false;
-            npc.MudarDestino(destino.transform.position);
+            npc.MudarDestino(destino.transform.position, true);
         }
     }
 }
