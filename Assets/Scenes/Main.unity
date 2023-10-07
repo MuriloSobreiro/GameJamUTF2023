@@ -194,11 +194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7222564971006919724, guid: d390da127e7de4243a31f3e009031c1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.23
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7222564971006919724, guid: d390da127e7de4243a31f3e009031c1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7222564971006919724, guid: d390da127e7de4243a31f3e009031c1c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -400,8 +400,7 @@ PrefabInstance:
       value: Quarto Base (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4551009711281178748, guid: 997925813d070954f82c2a7efdee3ff6, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 997925813d070954f82c2a7efdee3ff6, type: 3}
@@ -804,8 +803,7 @@ PrefabInstance:
       value: Quarto Base (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5224525191317728085, guid: 997925813d070954f82c2a7efdee3ff6, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 997925813d070954f82c2a7efdee3ff6, type: 3}

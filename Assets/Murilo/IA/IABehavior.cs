@@ -9,10 +9,11 @@ public class IABehavior : MonoBehaviour
     public GameObject rondas;
     private Rigidbody2D rb;
     public Vector2 destinoDesejado = Vector2.zero;
-    public bool escada = false, assustado = false, atencao = false;
+    public bool escada = false, assustado = false, atencao = false, animando = false;
     private int i = 0;
     public float coolDownRonda = 5f, coolDownAtencao = 5f;
     private float timer = 0;
+    public Animator animator;
 
     void Start()
     {
@@ -50,17 +51,12 @@ public class IABehavior : MonoBehaviour
             Explodir();
 
         Vector2 destino = DecidePonto();
+        if (Mathf.Abs(transform.position.x - destino.x) < 0.6)
+            animator.SetTrigger("Parar");
         rb.MovePosition(Vector2.MoveTowards(transform.position,new Vector2(destino.x,transform.position.y), 0.1f));
-        if (Mathf.Abs(transform.position.x - destino.x) < 0.6f && escada)
+        if (Mathf.Abs(transform.position.x - destino.x) < 0.6f && escada && !animando)
         {
-            var a = quarto.GetEscada(destino.y);
-            if (destino.y > transform.position.y)
-                transform.position = a.escadaSobe.transform.position;
-            else
-                transform.position = a.escadaDesce.transform.position;
-            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-
-            escada = false;
+            StartCoroutine("EsperaAnim");
         }
     }
     void DestRonda()
@@ -84,8 +80,35 @@ public class IABehavior : MonoBehaviour
     {
 
     }
+    private void Animar()
+    {
+
+    }
+    IEnumerator EsperaAnim()
+    {
+        animando = true;
+        Vector2 destino = DecidePonto();
+        var a = quarto.GetEscada(destino.y);
+        if (destinoDesejado.y > transform.position.y)
+        {
+            animator.SetTrigger("Subir");
+            print("Subir");
+            yield return new WaitForSeconds(1.6f);
+            transform.position = a.escadaSobe.transform.position;
+        }
+        else
+        {
+            print("Descer");
+            transform.position = a.escadaDesce.transform.position;
+            animator.SetTrigger("Descer");
+        }
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        escada = false;
+        animando = false;
+    }
     public void MudarDestino(Vector2 ponto, bool att = false)
     {
+        animator.SetTrigger("Andar");
         if (att)
             DestAtencao();
         destinoDesejado = ponto;
