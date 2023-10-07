@@ -43,13 +43,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
         if (!objectController.Interagir()) return;
+        animator.SetBool("isInteracting", true);
 
 
         scaryObject = objectController;
         sprite.color = new Color(1f, 1f, 1f, 1f);
 
         canMove = false;
-        Invoke("HidePlayer", 0.5f);
+        Invoke("HidePlayer", 0.75f);
     }
 
     public void Move(float moveX, float moveY){
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
     private void UnhidePlayer(){
         isHide = false;
         canMove = true;
+        animator.SetBool("isInteracting", false);
         sprite.color = new Color(1f, 1f, 1f, 0.5f);
     }
 

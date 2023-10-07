@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1468417308008923739
 Transform:
   m_ObjectHideFlags: 0
@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 2948485130020163057}
   - component: {fileID: 7840034367706315711}
   m_Layer: 0
-  m_Name: Quarto Base
+  m_Name: Quarto Base 7
   m_TagString: Quarto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
