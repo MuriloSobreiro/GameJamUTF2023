@@ -8,16 +8,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator animator;
     private SpriteRenderer sprite;
     private bool facingRight = true;
     private Vector2 velocity = Vector2.zero;
     private ObjectBaseController scaryObject;
     public bool isHide = false;
+    public bool canMove = true;
     public QuartoBehavior quarto;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -45,11 +48,12 @@ public class PlayerController : MonoBehaviour
         scaryObject = objectController;
         sprite.color = new Color(1f, 1f, 1f, 1f);
 
+        canMove = false;
         Invoke("HidePlayer", 0.5f);
     }
 
     public void Move(float moveX, float moveY){
-        if(isHide) return;
+        if(isHide || !canMove) return;
 
         Vector2 targetVelocity = new Vector2(moveX, moveY);
         rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
@@ -72,16 +76,19 @@ public class PlayerController : MonoBehaviour
 
     private void HidePlayer(){
         isHide = true;
+        rb.velocity = Vector2.zero;
         sprite.color = new Color(1f, 1f, 1f, 0f);
     }
 
     private void UnhidePlayer(){
         isHide = false;
+        canMove = true;
         sprite.color = new Color(1f, 1f, 1f, 0.5f);
     }
 
     private void GameOver(){
         print("Game Over");
+        animator.SetBool("isGameOver", true);
     }
 
     void Update()
