@@ -15,6 +15,10 @@ public class IABehavior : MonoBehaviour
     public float timer = 0;
     public Animator animator, animAtencao;
     public SpriteRenderer spriteRenderer;
+    public AudioSource morrendoSound;
+    public AudioSource subindoEscadaSound;
+    public AudioSource descendoEscadaSound;
+    public AudioSource exclamacao;
 
     void Start()
     {
@@ -95,6 +99,7 @@ public class IABehavior : MonoBehaviour
     private void Explodir()
     {
         Destroy(this.gameObject);
+        morrendoSound.Play();
     }
     public void Dancar()
     {
@@ -104,6 +109,7 @@ public class IABehavior : MonoBehaviour
     IEnumerator esperaAtencao(Vector2 ponto)
     {
         animAtencao.SetTrigger("Atencao");
+        exclamacao.Play();
         yield return new WaitForSeconds(tempoAtencao);
         atencao = true;
         destinoDesejado = ponto;
@@ -117,13 +123,15 @@ public class IABehavior : MonoBehaviour
         if (destinoDesejado.y > transform.position.y)
         {
             animator.SetTrigger("Subir");
+            subindoEscadaSound.Play();
             yield return new WaitForSeconds(1.6f);
             transform.position = a.escadaDesce.transform.position;
         }
         else
         {
             transform.position = a.escadaSobe.transform.position;
-            animator.SetTrigger("Descer");
+            animator.SetTrigger("Descer");          
+            descendoEscadaSound.Play();
             yield return new WaitForSeconds(1.6f);
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
