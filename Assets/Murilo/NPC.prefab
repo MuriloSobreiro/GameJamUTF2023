@@ -197,8 +197,10 @@ MonoBehaviour:
   coolDownAtencao: 5
   tempoAtencao: 2
   velocidade: 10
+  timer: 0
   animator: {fileID: 2896588195819806804}
   animAtencao: {fileID: 49521055332243431}
+  spriteRenderer: {fileID: 1957041193074166488}
 --- !u!70 &1047257674139014017
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -45,7 +45,14 @@ public class QuartoBehavior : MonoBehaviour
     public bool GameOver()
     {
         if (NPCs.Count > 0)
+        {
+            foreach (var npc in NPCs)
+            {
+                npc.Dancar();
+            }
             return true;
+        }
+        
         return false;
     }
     public QuartoBehavior GetEscada(float y)
