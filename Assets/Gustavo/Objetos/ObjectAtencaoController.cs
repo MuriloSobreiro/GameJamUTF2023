@@ -10,11 +10,12 @@ public class ObjetoAtencaoController : ObjectBaseController
     private bool canInteract = true;
     private QuartoBehavior quarto;
     private Transform attentionPoint;
+    public AudioSource usando;
 
     private void Awake() {
         attentionPoint = this.gameObject.transform.GetChild(0);
         animator = GetComponent<Animator>();
-        var coliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.1f, 0.1f),0);
+        var coliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.01f, 0.01f),0);
         foreach (var colider in coliders) {
             if (colider.tag == "Quarto") {
                 quarto = colider.GetComponent<QuartoBehavior>();
@@ -24,6 +25,7 @@ public class ObjetoAtencaoController : ObjectBaseController
     }
     public override bool Interagir() {
         if (!canInteract) return false;
+        usando.Play();
         canInteract = false;
         animator.SetBool("isInteracting", true);
         quarto.Atrair(attentionPoint.position);
@@ -33,6 +35,7 @@ public class ObjetoAtencaoController : ObjectBaseController
     }
 
     private void ResetUse() {
+        usando.Stop();
         animator.SetBool("isInteracting", false);
         canInteract = true;
     }

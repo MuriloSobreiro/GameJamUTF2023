@@ -29,7 +29,7 @@ public class AudioMaster : MonoBehaviour
         if(lugar == "GameOver")
         {
             audioSource.loop = false;
-            audioSource.clip = audios[4];
+            audioSource.clip = audios[3];
             audioSource.Play();
         }
     }

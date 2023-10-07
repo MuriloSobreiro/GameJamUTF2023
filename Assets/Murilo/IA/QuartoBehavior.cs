@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class QuartoBehavior : MonoBehaviour
 {
@@ -44,7 +45,6 @@ public class QuartoBehavior : MonoBehaviour
     }
     public bool GameOver()
     {
-        //FindFirstObjectByType<GameMaster>().GameOver();
         if (NPCs.Count > 0)
         {
             foreach (var npc in NPCs)
@@ -92,6 +92,8 @@ public class QuartoBehavior : MonoBehaviour
     }
     private void Update()
     {
+        if (!fundo.enabled)
+            return;
         if(NPCs.Count>0)
             fundo.color = new Color(0.5f, 0.7f, 0.2f);
         else
