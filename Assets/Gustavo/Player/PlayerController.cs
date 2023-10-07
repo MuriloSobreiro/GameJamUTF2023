@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         if (!objectController.Interagir()) return;
         
         sprite.color = new Color(1f, 1f, 1f, 1f);
-
+        animator.SetBool("isUsingObject", true);
         Invoke("MakeInvisible", 0.5f);
     }
 
@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void MakeInvisible(){
+        animator.SetBool("isUsingObject", false);
         sprite.color = new Color(1f, 1f, 1f, 0.5f);
     }
 
