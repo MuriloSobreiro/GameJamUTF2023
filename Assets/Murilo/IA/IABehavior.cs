@@ -6,7 +6,7 @@ public class IABehavior : MonoBehaviour
 {
     public List<Vector2> pontosRonda = new List<Vector2>();
     private QuartoBehavior quarto;
-    public GameObject rondas;
+    public GameObject rondas, saida;
     private Rigidbody2D rb;
     public Vector2 destinoDesejado = Vector2.zero;
     public bool escada = false, assustado = false, atencao = false;
@@ -22,6 +22,7 @@ public class IABehavior : MonoBehaviour
             pontosRonda.Add(child.position);
         }
         MudarDestino(pontosRonda[0]);
+        saida = GameObject.Find("Saida");
     }
 
     private Vector2 DecidePonto()
@@ -39,11 +40,16 @@ public class IABehavior : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer > coolDownRonda && !atencao)
-            DestRonda();
-        if (timer > coolDownAtencao && atencao)
-            atencao = false;
-            
+        if (!assustado)
+        {
+            if (timer > coolDownRonda && !atencao)
+                DestRonda();
+            if (timer > coolDownAtencao && atencao)
+                atencao = false;
+        }
+        else
+            destinoDesejado = saida.transform.position;
+
         Vector2 destino = DecidePonto();
         rb.MovePosition(Vector2.MoveTowards(transform.position,new Vector2(destino.x,transform.position.y), 0.1f));
         if (Mathf.Abs(transform.position.x - destino.x) < 0.6f && escada)
@@ -70,16 +76,17 @@ public class IABehavior : MonoBehaviour
         timer = 0;
         atencao = true;
     }
+    public void Assustar()
+    {
+        assustado = true;
+    }
     public void MudarDestino(Vector2 ponto, bool att = false)
     {
         if (att)
             DestAtencao();
         destinoDesejado = ponto;
     }
-    public void Assustar()
-    {
 
-    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Quarto")

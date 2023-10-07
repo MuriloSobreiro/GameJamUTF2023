@@ -27,7 +27,7 @@ public class QuartoBehavior : MonoBehaviour
     {
         foreach (var npc in NPCs)
         {
-            npc.MudarDestino(ponto);
+            npc.MudarDestino(ponto, true);
         }
     }
     public bool GameOver()
