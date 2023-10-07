@@ -55,8 +55,10 @@ public class IABehavior : MonoBehaviour
                 timer = 0;
             }
         }
-        else
-            Explodir();
+        else {
+            animator.SetTrigger("Morrer");
+            Invoke("Explodir", 1.2f);
+        }
 
         Vector2 destino = DecidePonto();
         if (destino.x - transform.position.x > 0)
