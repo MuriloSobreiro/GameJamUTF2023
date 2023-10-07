@@ -359,14 +359,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 228489023200537029, guid: cdf822298837be24280718343ed33021, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 228489023200537029, guid: cdf822298837be24280718343ed33021, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3482443103975957929, guid: cdf822298837be24280718343ed33021, type: 3}
       propertyPath: m_Name
       value: NPC
@@ -410,6 +402,10 @@ PrefabInstance:
     - target: {fileID: 4412295361106176925, guid: cdf822298837be24280718343ed33021, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858203600563263588, guid: cdf822298837be24280718343ed33021, type: 3}
+      propertyPath: velocidade
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

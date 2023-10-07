@@ -9,11 +9,12 @@ public class IABehavior : MonoBehaviour
     public GameObject rondas;
     private Rigidbody2D rb;
     public Vector2 destinoDesejado = Vector2.zero;
-    public bool escada = false, assustado = false, atencao = false, animando = false;
+    public bool escada = false, assustado = false, atencao = false, animando = false, parado = false;
     private int i = 0;
-    public float coolDownRonda = 5f, coolDownAtencao = 5f, tempoAtencao = 2f;
-    private float timer = 0;
+    public float coolDownRonda = 5f, coolDownAtencao = 5f, tempoAtencao = 2f, velocidade;
+    public float timer = 0;
     public Animator animator, animAtencao;
+    public SpriteRenderer spriteRenderer;
 
     void Start()
     {
@@ -39,13 +40,20 @@ public class IABehavior : MonoBehaviour
     }
     private void Update()
     {
-        timer += Time.deltaTime;
+        if(parado)
+            timer += Time.deltaTime;
         if (!assustado)
         {
             if (timer > coolDownRonda && !atencao)
+            {
+                timer = 0;
                 DestRonda();
+            }
             if (timer > coolDownAtencao && atencao)
+            {
                 atencao = false;
+                timer = 0;
+            }
         }
         else {
             animator.SetTrigger("Morrer");
@@ -53,17 +61,23 @@ public class IABehavior : MonoBehaviour
         }
 
         Vector2 destino = DecidePonto();
-        if (Mathf.Abs(transform.position.x - destino.x) < 0.6)
-            animator.SetTrigger("Parar");
-        rb.MovePosition(Vector2.MoveTowards(transform.position,new Vector2(destino.x,transform.position.y), 0.1f));
-        if (Mathf.Abs(transform.position.x - destino.x) < 0.6f && escada && !animando)
+        if (destino.x - transform.position.x > 0)
+            spriteRenderer.flipX = true;
+        else
+            spriteRenderer.flipX = false;
+        if (Mathf.Abs(transform.position.x - destino.x) < 0.1)
+        {
+            parado = true;   
+        }
+        animator.SetBool("Andando", !parado);
+        rb.MovePosition(Vector2.MoveTowards(transform.position,new Vector2(destino.x,transform.position.y), 0.01f * velocidade));
+        if (Mathf.Abs(transform.position.x - destino.x) < 0.1f && escada && !animando)
         {
             StartCoroutine("EsperaAnim");
         }
     }
     void DestRonda()
     {
-        timer = 0;
         i++;
         if (i >= pontosRonda.Count)
             i = 0;
@@ -83,11 +97,9 @@ public class IABehavior : MonoBehaviour
     }
     IEnumerator esperaAtencao(Vector2 ponto)
     {
-        timer = 0;
         animAtencao.SetTrigger("Atencao");
         yield return new WaitForSeconds(tempoAtencao);
         atencao = true;
-        timer = 0;
         destinoDesejado = ponto;
     }
     IEnumerator EsperaAnim()
@@ -100,22 +112,21 @@ public class IABehavior : MonoBehaviour
             animator.SetTrigger("Subir");
             yield return new WaitForSeconds(1.6f);
             transform.position = a.escadaSobe.transform.position;
-            timer = 0;
         }
         else
         {
             transform.position = a.escadaDesce.transform.position;
             animator.SetTrigger("Descer");
             yield return new WaitForSeconds(1.6f);
-            timer = 0;
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         escada = false;
         animando = false;
+        timer = 0;
     }
     public void MudarDestino(Vector2 ponto, bool att = false)
     {
-        animator.SetTrigger("Andar");
+        parado = false;
         if (att)
         {
             DestAtencao(ponto);
