@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
     public static GameMaster gameMaster;
+    public Canvas opcoes;
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
@@ -16,7 +17,17 @@ public class GameMaster : MonoBehaviour
         {
             Destroy(gameObject);
         }
-       
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            opcoes.enabled = !opcoes.enabled;
+        }
+    }
+    public void HideOpcoes()
+    {
+        opcoes.enabled = false;
     }
 
 }
