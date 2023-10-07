@@ -7,10 +7,25 @@ public class ObjetoAtencaoController : ObjectBaseController
     [SerializeField]
     private float delayUse = 5f;
     private bool canInteract = true;
+    private QuartoBehavior quarto;
+    private Transform attentionPoint;
+
+    private void Awake() {
+        attentionPoint = this.gameObject.transform.GetChild(0);
+        var coliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(2.1f, 2.1f),0);
+        foreach (var colider in coliders) {
+            if (colider.tag == "Quarto") {
+                quarto = colider.GetComponent<QuartoBehavior>();
+                break;
+            }
+        }
+    }
     public override bool Interagir() {
         if (!canInteract) return false;
         canInteract = false;
         print("Interagiu");
+        print(attentionPoint.position);
+        quarto.Atrair(attentionPoint.position);
         Invoke("ResetUse", delayUse);
 
         return true;
