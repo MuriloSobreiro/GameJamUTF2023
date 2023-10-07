@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class QuartoBehavior : MonoBehaviour
 {
-    private List<IABehavior> NPCs = new List<IABehavior>();
+    public List<IABehavior> NPCs = new List<IABehavior>();
     public List<QuartoBehavior> Quartos = new List<QuartoBehavior>();
     public GameObject escadaSobe, escadaDesce;
     public void AddNPC(IABehavior npc)
     {
-        NPCs.Add(npc);
+        if(!NPCs.Contains(npc))
+            NPCs.Add(npc);
     }
     public void RemoveNPC(IABehavior npc)
     {
@@ -26,7 +27,7 @@ public class QuartoBehavior : MonoBehaviour
     {
         foreach (var npc in NPCs)
         {
-            npc.MudarDestino(ponto);
+            npc.MudarDestino(ponto, true);
         }
     }
     public bool GameOver()
