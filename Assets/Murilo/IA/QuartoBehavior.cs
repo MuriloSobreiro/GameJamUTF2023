@@ -66,7 +66,6 @@ public class QuartoBehavior : MonoBehaviour
                 q = quarto;
             }
         }
-        print(q.name);
         return q;
     }
     private void Start()

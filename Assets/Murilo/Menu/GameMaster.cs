@@ -33,6 +33,7 @@ public class GameMaster : MonoBehaviour
     {
         if(scene.name == "Menu")
         {
+            audioMaster.lugar = "Menu";
             i = 0;
         }
         if (scene.name.StartsWith("Fase"))
