@@ -95,6 +95,11 @@ public class IABehavior : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+    public void Dancar()
+    {
+        animator.SetTrigger("GameOver");
+        this.enabled = false;
+    }
     IEnumerator esperaAtencao(Vector2 ponto)
     {
         animAtencao.SetTrigger("Atencao");

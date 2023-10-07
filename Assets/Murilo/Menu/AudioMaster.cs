@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioMaster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    AudioSource audioSource;
+    public AudioClip[] audios;
+    int mi = 0;
+    private string lugar = "Menu";
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+    }
+    private void Update()
+    {
+        if ((SceneManager.GetActiveScene().name.StartsWith("Menu")|| lugar =="Menu") && !audioSource.isPlaying && mi <1)
+        {
+            lugar = "Menu";
+            audioSource.clip = audios[mi];
+            audioSource.Play();
+            mi = 1;
+        }
+        if (lugar == "Menu" && SceneManager.GetActiveScene().name.StartsWith("Fase"))
+            lugar = "Fase";
+            audioSource.clip = audios[2];
     }
 }
