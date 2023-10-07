@@ -12,7 +12,7 @@ public class ObjetoAtencaoController : ObjectBaseController
 
     private void Awake() {
         attentionPoint = this.gameObject.transform.GetChild(0);
-        var coliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(2.1f, 2.1f),0);
+        var coliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(0.1f, 0.1f),0);
         foreach (var colider in coliders) {
             if (colider.tag == "Quarto") {
                 quarto = colider.GetComponent<QuartoBehavior>();

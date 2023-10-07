@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool facingRight = true;
     private Vector2 velocity = Vector2.zero;
     private ObjectBaseController scaryObject;
-    private bool isHide = false;
+    public bool isHide = false;
     public QuartoBehavior quarto;
 
     private void Awake()
@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void UnhidePlayer(){
+        isHide = false;
         sprite.color = new Color(1f, 1f, 1f, 0.5f);
     }
 
@@ -88,7 +89,6 @@ public class PlayerController : MonoBehaviour
         if (isHide && Input.GetKeyDown(KeyCode.E))
         {
             scaryObject.Usar();
-            isHide = false;
             Invoke("UnhidePlayer", 0.5f);
         }
 
@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Quarto")
         {
-            print("quarto");
             quarto = other.GetComponent<QuartoBehavior>();
         }
     }

@@ -6,7 +6,7 @@ public class IABehavior : MonoBehaviour
 {
     public List<Vector2> pontosRonda = new List<Vector2>();
     private QuartoBehavior quarto;
-    public GameObject rondas, saida;
+    public GameObject rondas;
     private Rigidbody2D rb;
     public Vector2 destinoDesejado = Vector2.zero;
     public bool escada = false, assustado = false, atencao = false;
@@ -22,7 +22,6 @@ public class IABehavior : MonoBehaviour
             pontosRonda.Add(child.position);
         }
         MudarDestino(pontosRonda[0]);
-        saida = GameObject.Find("Saida");
     }
 
     private Vector2 DecidePonto()
@@ -48,7 +47,7 @@ public class IABehavior : MonoBehaviour
                 atencao = false;
         }
         else
-            destinoDesejado = saida.transform.position;
+            Explodir();
 
         Vector2 destino = DecidePonto();
         rb.MovePosition(Vector2.MoveTowards(transform.position,new Vector2(destino.x,transform.position.y), 0.1f));
@@ -60,6 +59,7 @@ public class IABehavior : MonoBehaviour
             else
                 transform.position = a.escadaDesce.transform.position;
             transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+
             escada = false;
         }
     }
@@ -79,6 +79,10 @@ public class IABehavior : MonoBehaviour
     public void Assustar()
     {
         assustado = true;
+    }
+    private void Explodir()
+    {
+
     }
     public void MudarDestino(Vector2 ponto, bool att = false)
     {

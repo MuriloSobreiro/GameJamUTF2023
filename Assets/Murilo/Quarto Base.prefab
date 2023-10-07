@@ -174,8 +174,8 @@ Transform:
   m_GameObject: {fileID: 8583545760709058374}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.05, z: 10}
-  m_LocalScale: {x: 2, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: -1.05, z: 0}
+  m_LocalScale: {x: 2, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8430445814809526397}
@@ -254,7 +254,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -331,7 +331,7 @@ Transform:
   m_GameObject: {fileID: 8998279855322288537}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -353,9 +353,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d41594305eb04e41bcb77aad0005046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NPCs: []
   Quartos: []
   escadaSobe: {fileID: 5224525191317728085}
   escadaDesce: {fileID: 4551009711281178748}
+  fundo: {fileID: 7686978021051510475}
 --- !u!61 &7840034367706315711
 BoxCollider2D:
   m_ObjectHideFlags: 0

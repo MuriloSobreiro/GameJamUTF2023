@@ -7,6 +7,8 @@ public class QuartoBehavior : MonoBehaviour
     public List<IABehavior> NPCs = new List<IABehavior>();
     public List<QuartoBehavior> Quartos = new List<QuartoBehavior>();
     public GameObject escadaSobe, escadaDesce;
+    public SpriteRenderer fundo;
+    public bool paredeEsquerda, paredeDireita;
     public void AddNPC(IABehavior npc)
     {
         if(!NPCs.Contains(npc))
@@ -23,8 +25,18 @@ public class QuartoBehavior : MonoBehaviour
             npc.Assustar();
         }
     }
+
     public void Atrair(Vector2 ponto)
     {
+        
+        foreach (var q in Quartos)
+        {
+            q.AtrairNpcs(ponto);
+        }
+    }
+    public void AtrairNpcs(Vector2 ponto)
+    {
+
         foreach (var npc in NPCs)
         {
             npc.MudarDestino(ponto, true);
@@ -55,10 +67,26 @@ public class QuartoBehavior : MonoBehaviour
         {
             if (q.tag == "Quarto")
             {
-                if(q.transform.position.x == transform.position.x || q.transform.position.y == transform.position.y)
-                    Quartos.Add(q.GetComponent<QuartoBehavior>());
+                if (q.transform.position.x == transform.position.x || q.transform.position.y == transform.position.y)
+                {
+                    if (q.transform.position.y < transform.position.y && escadaDesce)
+                        Quartos.Add(q.GetComponent<QuartoBehavior>());
+                    else if (q.transform.position.y > transform.position.y && escadaSobe)
+                        Quartos.Add(q.GetComponent<QuartoBehavior>());
+                    else if (q.transform.position.x < transform.position.x && !paredeEsquerda)
+                        Quartos.Add(q.GetComponent<QuartoBehavior>());
+                    else if (q.transform.position.x > transform.position.x && !paredeDireita)
+                        Quartos.Add(q.GetComponent<QuartoBehavior>());
+                }
             }
         }
         Quartos.Remove(this);
+    }
+    private void Update()
+    {
+        if(NPCs.Count>0)
+            fundo.color = new Color(0.5f, 0.7f, 0.2f);
+        else
+            fundo.color = new Color(0.5f, 0.5f, 0.5f);
     }
 }
