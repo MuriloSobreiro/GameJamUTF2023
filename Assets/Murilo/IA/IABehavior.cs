@@ -47,8 +47,10 @@ public class IABehavior : MonoBehaviour
             if (timer > coolDownAtencao && atencao)
                 atencao = false;
         }
-        else
-            Explodir();
+        else {
+            animator.SetTrigger("Morrer");
+            Invoke("Explodir", 1.2f);
+        }
 
         Vector2 destino = DecidePonto();
         if (Mathf.Abs(transform.position.x - destino.x) < 0.6)
