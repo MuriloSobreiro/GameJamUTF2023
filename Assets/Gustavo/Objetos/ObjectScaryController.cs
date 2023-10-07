@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectScaryController : ObjectBaseController
 {
-    private bool wasUsed = false;
+    public bool wasUsed = false;
     private Animator animator;
     private QuartoBehavior quarto;
     private void Awake() {
