@@ -6,6 +6,7 @@ public class QuartoBehavior : MonoBehaviour
 {
     private List<IABehavior> NPCs = new List<IABehavior>();
     public List<QuartoBehavior> Quartos = new List<QuartoBehavior>();
+    public GameObject escadaSobe, escadaDesce;
     public void AddNPC(IABehavior npc)
     {
         NPCs.Add(npc);
@@ -27,6 +28,24 @@ public class QuartoBehavior : MonoBehaviour
         {
             npc.MudarDestino(ponto);
         }
+    }
+    public bool GameOver()
+    {
+        if (NPCs.Count > 0)
+            return true;
+        return false;
+    }
+    public QuartoBehavior GetEscada(float y)
+    {
+        QuartoBehavior q = this;
+        foreach(var quarto in Quartos)
+        {
+            if(Mathf.Abs(quarto.transform.position.y - y) > Mathf.Abs(q.transform.position.y - y))
+            {
+                q = quarto;
+            }
+        }
+        return q;
     }
     private void Start()
     {
