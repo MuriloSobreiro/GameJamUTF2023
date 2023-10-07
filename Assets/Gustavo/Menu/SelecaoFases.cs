@@ -21,6 +21,7 @@ public class SelecaoFases : MonoBehaviour
             GameObject button = Instantiate(buttonPrefab);
             button.transform.SetParent(transform);
             button.GetComponent<Button>().onClick.AddListener(() => UnityEngine.SceneManagement.SceneManager.LoadScene(fase));
+            button.GetComponentInChildren<Text>().text = fase;
         }
     }
 }
