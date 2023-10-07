@@ -196,6 +196,7 @@ MonoBehaviour:
   coolDownRonda: 5
   coolDownAtencao: 5
   tempoAtencao: 2
+  velocidade: 10
   animator: {fileID: 2896588195819806804}
   animAtencao: {fileID: 49521055332243431}
 --- !u!70 &1047257674139014017

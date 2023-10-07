@@ -11,8 +11,8 @@ public class IABehavior : MonoBehaviour
     public Vector2 destinoDesejado = Vector2.zero;
     public bool escada = false, assustado = false, atencao = false, animando = false;
     private int i = 0;
-    public float coolDownRonda = 5f, coolDownAtencao = 5f, tempoAtencao = 2f;
-    private float timer = 0;
+    public float coolDownRonda = 5f, coolDownAtencao = 5f, tempoAtencao = 2f, velocidade;
+    public float timer = 0;
     public Animator animator, animAtencao;
 
     void Start()
@@ -51,10 +51,10 @@ public class IABehavior : MonoBehaviour
             Explodir();
 
         Vector2 destino = DecidePonto();
-        if (Mathf.Abs(transform.position.x - destino.x) < 0.6)
+        if (Mathf.Abs(transform.position.x - destino.x) < 0.1)
             animator.SetTrigger("Parar");
-        rb.MovePosition(Vector2.MoveTowards(transform.position,new Vector2(destino.x,transform.position.y), 0.1f));
-        if (Mathf.Abs(transform.position.x - destino.x) < 0.6f && escada && !animando)
+        rb.MovePosition(Vector2.MoveTowards(transform.position,new Vector2(destino.x,transform.position.y), 0.01f * velocidade));
+        if (Mathf.Abs(transform.position.x - destino.x) < 0.1f && escada && !animando)
         {
             StartCoroutine("EsperaAnim");
         }
@@ -110,6 +110,7 @@ public class IABehavior : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         escada = false;
         animando = false;
+        timer = 0;
     }
     public void MudarDestino(Vector2 ponto, bool att = false)
     {
