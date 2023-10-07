@@ -61,7 +61,7 @@ public class QuartoBehavior : MonoBehaviour
         QuartoBehavior q = this;
         foreach(var quarto in Quartos)
         {
-            if(y - quarto.transform.position.y > y-q.transform.position.y)
+            if(Mathf.Abs(y - quarto.transform.position.y) > Mathf.Abs(y-q.transform.position.y))
             {
                 q = quarto;
             }
