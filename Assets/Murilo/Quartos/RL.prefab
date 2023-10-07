@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1468417308008923739
 Transform:
   m_ObjectHideFlags: 0
@@ -238,37 +238,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &4551009711281178748
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8731723505840176688}
-  m_Layer: 0
-  m_Name: Desce
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8731723505840176688
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4551009711281178748}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.78, y: -0.84, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8430445814809526397}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4984420956624575352
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,37 +284,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!1 &5224525191317728085
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4425045779934252268}
-  m_Layer: 0
-  m_Name: Sobe
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4425045779934252268
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5224525191317728085}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.65, y: -0.78, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8430445814809526397}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6218572282763626822
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +608,7 @@ GameObject:
   - component: {fileID: 2948485130020163057}
   - component: {fileID: 7840034367706315711}
   m_Layer: 0
-  m_Name: Quarto Base
+  m_Name: RL
   m_TagString: Quarto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,8 +629,6 @@ Transform:
   m_Children:
   - {fileID: 1468417308008923739}
   - {fileID: 5439175053843320758}
-  - {fileID: 4425045779934252268}
-  - {fileID: 8731723505840176688}
   - {fileID: 113555019675894038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -710,8 +646,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCs: []
   Quartos: []
-  escadaSobe: {fileID: 5224525191317728085}
-  escadaDesce: {fileID: 4551009711281178748}
+  escadaSobe: {fileID: 0}
+  escadaDesce: {fileID: 0}
   fundo: {fileID: 7686978021051510475}
   paredeEsquerda: 0
   paredeDireita: 0
