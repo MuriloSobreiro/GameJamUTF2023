@@ -11,7 +11,7 @@ public class IABehavior : MonoBehaviour
     public Vector2 destinoDesejado = Vector2.zero;
     public bool escada = false, assustado = false, atencao = false, animando = false;
     private int i = 0;
-    public float coolDownRonda = 5f, coolDownAtencao = 5f;
+    public float coolDownRonda = 5f, coolDownAtencao = 5f, tempoAtencao = 2f;
     private float timer = 0;
     public Animator animator;
 
@@ -67,10 +67,9 @@ public class IABehavior : MonoBehaviour
             i = 0;
         MudarDestino(pontosRonda[i]);
     }
-    void DestAtencao()
+    void DestAtencao(Vector2 ponto)
     {
-        timer = 0;
-        atencao = true;
+        StartCoroutine(esperaAtencao(ponto));
     }
     public void Assustar()
     {
@@ -78,11 +77,15 @@ public class IABehavior : MonoBehaviour
     }
     private void Explodir()
     {
-
+        Destroy(this.gameObject);
     }
-    private void Animar()
+    IEnumerator esperaAtencao(Vector2 ponto)
     {
-
+        timer = 0;
+        yield return new WaitForSeconds(tempoAtencao);
+        atencao = true;
+        timer = 0;
+        destinoDesejado = ponto;
     }
     IEnumerator EsperaAnim()
     {
@@ -92,15 +95,16 @@ public class IABehavior : MonoBehaviour
         if (destinoDesejado.y > transform.position.y)
         {
             animator.SetTrigger("Subir");
-            print("Subir");
             yield return new WaitForSeconds(1.6f);
             transform.position = a.escadaSobe.transform.position;
+            timer = 0;
         }
         else
         {
-            print("Descer");
             transform.position = a.escadaDesce.transform.position;
             animator.SetTrigger("Descer");
+            yield return new WaitForSeconds(1.6f);
+            timer = 0;
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         escada = false;
@@ -110,7 +114,10 @@ public class IABehavior : MonoBehaviour
     {
         animator.SetTrigger("Andar");
         if (att)
-            DestAtencao();
+        {
+            DestAtencao(ponto);
+            return;
+        }
         destinoDesejado = ponto;
     }
 
