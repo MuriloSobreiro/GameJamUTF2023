@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool isHide = false;
     public bool canMove = true;
     public QuartoBehavior quarto;
+    public AudioSource gameOver;
 
     private void Awake()
     {
@@ -92,6 +93,7 @@ public class PlayerController : MonoBehaviour
     private void GameOver(){
         print("Game Over");
         animator.SetBool("isGameOver", true);
+        gameOver.Play();
     }
 
     void Update()
