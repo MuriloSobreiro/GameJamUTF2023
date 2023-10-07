@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9acc4d6e11d8ab872a144d6747ea9368
+guid: 15b271e71de194d0b9da6e662a1974b6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FantasmaAndar_0
+      name: Pia_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 29
-        height: 26
+        width: 19
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a98b19a9937953383a9952f29e796b41
-      internalID: -1667851339
+      spriteID: 76ed73113fd8eaf05841c95c80d0246a
+      internalID: -2129067583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FantasmaAndar_1
+      name: Pia_1
       rect:
         serializedVersion: 2
-        x: 29
+        x: 19
         y: 0
-        width: 29
-        height: 26
+        width: 19
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d88a4f3059b775c2db51ebf2cb6c71f8
-      internalID: 1362795457
+      spriteID: 14b3929028ee39279a0ea875d5d8611e
+      internalID: 735290751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FantasmaAndar_2
+      name: Pia_2
       rect:
         serializedVersion: 2
-        x: 58
+        x: 38
         y: 0
-        width: 29
-        height: 26
+        width: 19
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 317a109257afd1eb6b507d1669d04c05
-      internalID: 1133457194
+      spriteID: d0155a1a54c5fac4190722c4d206b091
+      internalID: 111988644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FantasmaAndar_3
+      name: Pia_3
       rect:
         serializedVersion: 2
-        x: 87
+        x: 57
         y: 0
-        width: 29
-        height: 26
+        width: 19
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a109d47e13964525bcd16cf296d9bc8
-      internalID: -1947332865
+      spriteID: 8377da29c5c56d4afa61f2bffeb0769b
+      internalID: 919276336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pia_4
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 0
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4fba804dbf38a659a1c1b5d38098045
+      internalID: -130367625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pia_5
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 0
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1953d6146dfbf2653b088cd0185845d1
+      internalID: -871867635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pia_6
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 0
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70afdb53962274e1a80f7c75e7f060ee
+      internalID: 680765438
       vertices: []
       indices: 
       edges: []
@@ -217,10 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FantasmaAndar_0: -1667851339
-      FantasmaAndar_1: 1362795457
-      FantasmaAndar_2: 1133457194
-      FantasmaAndar_3: -1947332865
+      Pia_0: -2129067583
+      Pia_1: 735290751
+      Pia_2: 111988644
+      Pia_3: 919276336
+      Pia_4: -130367625
+      Pia_5: -871867635
+      Pia_6: 680765438
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

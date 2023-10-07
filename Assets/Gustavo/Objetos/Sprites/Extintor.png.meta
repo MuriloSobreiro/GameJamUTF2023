@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9acc4d6e11d8ab872a144d6747ea9368
+guid: 1c922754b666a3bbb8f6d5bf487cd1d0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FantasmaAndar_0
+      name: Extintor_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 29
-        height: 26
+        width: 30
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a98b19a9937953383a9952f29e796b41
-      internalID: -1667851339
+      spriteID: bc5133f1661e445efb759ba28ef4c21b
+      internalID: -499337910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FantasmaAndar_1
+      name: Extintor_1
       rect:
         serializedVersion: 2
-        x: 29
+        x: 30
         y: 0
-        width: 29
-        height: 26
+        width: 30
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d88a4f3059b775c2db51ebf2cb6c71f8
-      internalID: 1362795457
+      spriteID: b4986363a311bb4fdb4af5411daffd7c
+      internalID: 1983933325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FantasmaAndar_2
+      name: Extintor_2
       rect:
         serializedVersion: 2
-        x: 58
+        x: 60
         y: 0
-        width: 29
-        height: 26
+        width: 30
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 317a109257afd1eb6b507d1669d04c05
-      internalID: 1133457194
+      spriteID: 0bf41254fe4bf3969bf8ca08f84ed98b
+      internalID: -1164296403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FantasmaAndar_3
+      name: Extintor_3
       rect:
         serializedVersion: 2
-        x: 87
+        x: 90
         y: 0
-        width: 29
-        height: 26
+        width: 30
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a109d47e13964525bcd16cf296d9bc8
-      internalID: -1947332865
+      spriteID: 3e06e87f13a22836fb4b3b78ad18d50d
+      internalID: 835391319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Extintor_4
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a6054535111f62ebb49fc3aee46900
+      internalID: 655750509
       vertices: []
       indices: 
       edges: []
@@ -217,10 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FantasmaAndar_0: -1667851339
-      FantasmaAndar_1: 1362795457
-      FantasmaAndar_2: 1133457194
-      FantasmaAndar_3: -1947332865
+      Extintor_0: -499337910
+      Extintor_1: 1983933325
+      Extintor_2: -1164296403
+      Extintor_3: 835391319
+      Extintor_4: 655750509
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
