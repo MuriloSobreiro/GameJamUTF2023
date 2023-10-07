@@ -67,7 +67,8 @@ public class IABehavior : MonoBehaviour
             spriteRenderer.flipX = false;
         if (Mathf.Abs(transform.position.x - destino.x) < 0.1)
         {
-            parado = true;   
+            parado = true;
+
         }
         animator.SetBool("Andando", !parado);
         rb.MovePosition(Vector2.MoveTowards(transform.position,new Vector2(destino.x,transform.position.y), 0.01f * velocidade));
@@ -110,17 +111,18 @@ public class IABehavior : MonoBehaviour
     IEnumerator EsperaAnim()
     {
         animando = true;
+        timer = 0;
         Vector2 destino = DecidePonto();
         var a = quarto.GetEscada(destino.y);
         if (destinoDesejado.y > transform.position.y)
         {
             animator.SetTrigger("Subir");
             yield return new WaitForSeconds(1.6f);
-            transform.position = a.escadaSobe.transform.position;
+            transform.position = a.escadaDesce.transform.position;
         }
         else
         {
-            transform.position = a.escadaDesce.transform.position;
+            transform.position = a.escadaSobe.transform.position;
             animator.SetTrigger("Descer");
             yield return new WaitForSeconds(1.6f);
         }

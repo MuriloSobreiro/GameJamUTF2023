@@ -8,7 +8,7 @@ public class AudioMaster : MonoBehaviour
     AudioSource audioSource;
     public AudioClip[] audios;
     int mi = 0;
-    private string lugar = "Menu";
+    public string lugar = "Menu";
 
     private void Start()
     {
@@ -26,5 +26,11 @@ public class AudioMaster : MonoBehaviour
         if (lugar == "Menu" && SceneManager.GetActiveScene().name.StartsWith("Fase"))
             lugar = "Fase";
             audioSource.clip = audios[2];
+        if(lugar == "GameOver")
+        {
+            audioSource.loop = false;
+            audioSource.clip = audios[4];
+            audioSource.Play();
+        }
     }
 }

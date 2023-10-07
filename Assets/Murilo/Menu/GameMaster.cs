@@ -6,6 +6,7 @@ public class GameMaster : MonoBehaviour
 {
     public static GameMaster gameMaster;
     public Canvas opcoes;
+    public AudioMaster audioMaster;
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
@@ -28,6 +29,10 @@ public class GameMaster : MonoBehaviour
     public void HideOpcoes()
     {
         opcoes.enabled = false;
+    }
+    public void GameOver()
+    {
+        audioMaster.lugar = "GameOver";
     }
 
 }

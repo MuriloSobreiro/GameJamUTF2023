@@ -44,6 +44,7 @@ public class QuartoBehavior : MonoBehaviour
     }
     public bool GameOver()
     {
+        //FindFirstObjectByType<GameMaster>().GameOver();
         if (NPCs.Count > 0)
         {
             foreach (var npc in NPCs)
